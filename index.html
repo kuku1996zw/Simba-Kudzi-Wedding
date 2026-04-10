@@ -1,1 +1,225 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kudzi & Simbarashe</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #0a0a0a;
+  color: #fff;
+  scroll-behavior: smooth;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  width: 100%;
+  background: rgba(0,0,0,0.7);
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  z-index: 1000;
+}
+
+nav a {
+  color: gold;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
+  url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486') center/cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5em;
+}
+
+.countdown {
+  color: gold;
+}
+
+/* SECTION */
+.section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+/* TIMELINE */
+.card {
+  background: #141414;
+  padding: 25px;
+  margin: 20px auto;
+  max-width: 400px;
+  border-left: 3px solid gold;
+  border-radius: 10px;
+}
+
+/* BUTTON */
+button {
+  padding: 12px 25px;
+  background: gold;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* GALLERY */
+.gallery img {
+  width: 90%;
+  max-width: 300px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+/* MAP */
+iframe {
+  width: 90%;
+  height: 250px;
+  border-radius: 10px;
+}
+
+/* ANIMATION */
+.fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 1s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#story">Story</a>
+  <a href="#timeline">Schedule</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#rsvp">RSVP</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Kudzi & Simbarashe</h1>
+  <p>15 August 2026</p>
+  <div id="countdown"></div>
+</div>
+
+<!-- STORY -->
+<div id="story" class="section fade">
+  <h2>Our Love Story</h2>
+  <p>
+  What began as a simple connection grew into something undeniable.  
+  Through laughter, growth, and shared dreams, we found in each other a forever.  
+  Now, we stand ready to begin the greatest chapter of our lives together.
+  </p>
+</div>
+
+<!-- TIMELINE -->
+<div id="timeline" class="section fade">
+  <h2>Wedding Day</h2>
+
+  <div class="card">
+    <h3>💍 Ceremony</h3>
+    <p>Greendale Kingdom Hall of Jehovah’s Witnesses</p>
+    <p>2:00 PM</p>
+    <a href="https://www.google.com/maps/search/?api=1&query=Greendale+Kingdom+Hall+Harare" target="_blank">
+      <button>Directions</button>
+    </a>
+  </div>
+
+  <div class="card">
+    <h3>🥂 Reception</h3>
+    <p>Cresta Lodge, Msasa</p>
+    <p>5:00 PM</p>
+    <a href="https://www.google.com/maps/search/?api=1&query=Cresta+Lodge+Msasa+Harare" target="_blank">
+      <button>Directions</button>
+    </a>
+  </div>
+
+  <p style="color:gold; margin-top:20px;">
+    Please allow travel time between venues.
+  </p>
+</div>
+
+<!-- MAPS -->
+<div class="section fade">
+  <h2>Locations</h2>
+
+  <iframe src="https://maps.google.com/maps?q=Greendale%20Kingdom%20Hall%20Harare&output=embed"></iframe>
+  <br><br>
+  <iframe src="https://maps.google.com/maps?q=Cresta%20Lodge%20Msasa%20Harare&output=embed"></iframe>
+</div>
+
+<!-- GALLERY -->
+<div id="gallery" class="section fade">
+  <h2>Gallery</h2>
+  <div class="gallery">
+    <img src="https://images.unsplash.com/photo-1519741497674-611481863552">
+    <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf">
+    <img src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe">
+  </div>
+</div>
+
+<!-- RSVP -->
+<div id="rsvp" class="section fade">
+  <h2>RSVP</h2>
+  <p>Kindly confirm your attendance</p>
+
+  <a href="https://wa.me/263784706360?text=Hello%20I%20am%20confirming%20my%20attendance%20for%20your%20wedding" target="_blank">
+    <button>RSVP via WhatsApp</button>
+  </a>
+</div>
+
+<!-- SCRIPT -->
+<script>
+// COUNTDOWN
+const date = new Date("Aug 15, 2026 14:00:00").getTime();
+setInterval(() => {
+  let now = new Date().getTime();
+  let gap = date - now;
+
+  let d = Math.floor(gap / (1000*60*60*24));
+  let h = Math.floor((gap / (1000*60*60)) % 24);
+  let m = Math.floor((gap / (1000*60)) % 60);
+  let s = Math.floor((gap / 1000) % 60);
+
+  document.getElementById("countdown").innerHTML =
+  `${d}d ${h}h ${m}m ${s}s`;
+}, 1000);
+
+// SCROLL ANIMATION
+const items = document.querySelectorAll('.fade');
+window.addEventListener('scroll', () => {
+  items.forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 50) {
+      el.classList.add('show');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
+
